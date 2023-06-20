@@ -1,16 +1,21 @@
 import express from "express";
 import morgan from "morgan";
+import dotenv from "dotenv";
+import productsRouter from "./routers/products.js";
+dotenv.config();
 
 const app = express();
 
+//* MIDDLE WARES
+
+app.use(express.json());
+
 app.use(morgan("dev"));
 
-app.listen(3000);
+app.listen(process.env.PORT);
 
 app.get("/", (req, res) => {
   res.send("this is home");
 });
 
-app.get("/orders", (req, res) => {
-  res.send("this is orders");
-});
+app.use("/products", productsRouter);
