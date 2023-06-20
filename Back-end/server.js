@@ -7,7 +7,7 @@ dotenv.config();
 const app = express();
 
 //* MIDDLE WARES
-
+s;
 app.use(express.json());
 
 app.use(morgan("dev"));
