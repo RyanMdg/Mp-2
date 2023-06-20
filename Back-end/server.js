@@ -6,8 +6,7 @@ dotenv.config();
 
 const app = express();
 
-//* MIDDLE WARES
-s;
+//* MIDDLE WARE
 app.use(express.json());
 
 app.use(morgan("dev"));
