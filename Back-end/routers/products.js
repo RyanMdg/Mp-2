@@ -39,7 +39,8 @@ router.patch("/productlist/:id", (req, res) => {
 });
 
 //* POST NEW PRODUCTS
-// * ahahahahaha
+// * ahahahahah
+// * add add
 router.post("/productadd", async (req, res) => {
   const { productName, price, stock } = req.body;
 
