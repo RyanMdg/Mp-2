@@ -2,6 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import productsRouter from "./routers/products.js";
+import shopRouter from "./routers/shops.js";
 import mongoose from "mongoose";
 dotenv.config();
 
@@ -18,6 +19,9 @@ app.get("/", (req, res) => {
 
 // * Router for products restful
 app.use("/products", productsRouter);
+
+// * Router for shops
+app.use("/shops", shopRouter);
 
 mongoose
   .connect(process.env.MONGO_URI)

@@ -1,5 +1,4 @@
 import exprss from "express";
-import prodSchema from "../models/productSchema.js";
 import prodController from "../controllers/productController.js";
 const router = exprss.Router();
 
