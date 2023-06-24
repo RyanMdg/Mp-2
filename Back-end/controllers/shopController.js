@@ -25,7 +25,7 @@ const shopSingle = (req, res) => {
     .catch((err) => res.status(404).json({ error: "Product Don't Exis" }));
 };
 
-// * ADDING NEW SHOP
+// * ADDING NEW SHOP for static
 const shopAdded = async (req, res) => {
   const { shopName, address, contact } = req.body;
 
