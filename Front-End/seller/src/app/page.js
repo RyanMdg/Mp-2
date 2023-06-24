@@ -7,6 +7,7 @@ export default function Home() {
   return (
     <main>
       <Navbar />
+       <h1>HI FROM HOME</h1>
     </main>
   );
 }
