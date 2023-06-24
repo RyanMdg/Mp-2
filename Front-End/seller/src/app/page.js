@@ -8,7 +8,8 @@ export default function Home() {
   return (
     <main>
       <Navbar />
-       <h1>HI FROM HOME</h1>
+      <h1>HI FROM HOME</h1>
+      <span>this is our fucking home!</span>
     </main>
   );
 }
