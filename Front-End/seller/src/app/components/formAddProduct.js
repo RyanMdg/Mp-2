@@ -6,7 +6,7 @@ const ProductForm = () => {
     productName: "",
     price: 0,
     stock: 0,
-    descriptipn: "",
+    description: "",
   });
 
   const [showModal, setShowModal] = useState(false);

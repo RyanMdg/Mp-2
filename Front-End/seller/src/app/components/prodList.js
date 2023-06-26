@@ -3,11 +3,11 @@ import ProductTable from "./prodListable";
 import { useState } from "react";
 
 const productList = () => {
-  const [formData, setFormData] = useState([]);
   const crumbs = [
     { label: "Dashboard /", path: "/" },
     { label: "Products List", path: "/productlist" },
   ];
+
   return (
     <div className=" my-5 mx-20">
       <Breadcrumb crumbs={crumbs} />
@@ -17,7 +17,7 @@ const productList = () => {
           <a href="/productadd"> Add Product</a>
         </button>
       </div>
-      <ProductTable data={formData} />
+      <ProductTable />
     </div>
   );
 };
