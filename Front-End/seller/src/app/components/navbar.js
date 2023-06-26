@@ -24,7 +24,7 @@ const Hamburger = () => {
   return (
     <div className="flex bg-white drop-shadow-lg h-16">
       <div
-        className={`fixed inset-0  z-50 ${isOpen ? "bg-opacity-50" : "hidden"}`}
+        className={` ${isOpen ? "bg-opacity-50" : "hidden"} `}
         onClick={toggleSidebar}
       ></div>
       <div
@@ -229,7 +229,11 @@ const Hamburger = () => {
             />
           </svg>
         </button>
-        <div className="flex flex-col me-4 justify-center">
+        <div
+          className={`flex flex-col me-4 justify-center  ${
+            isOpen ? "inline-block" : "block"
+          }`}
+        >
           <h1 className=" font-bold">costumer.name</h1>
           <span className=" text-gray-500 text-sm text-center">
             costumer.email

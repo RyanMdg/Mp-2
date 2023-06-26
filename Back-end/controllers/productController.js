@@ -60,10 +60,15 @@ const productsUpdate = (req, res) => {
 
 // * ADDED PRODUCTS
 const productsAdded = async (req, res) => {
-  const { productName, price, stock } = req.body;
+  const { productName, price, stock, description } = req.body;
 
   try {
-    const products = await prodSchema.create({ productName, price, stock });
+    const products = await prodSchema.create({
+      productName,
+      price,
+      stock,
+      description,
+    });
     res.status(200).json(products);
   } catch (error) {
     res.status(400).json({ error: error.message });
