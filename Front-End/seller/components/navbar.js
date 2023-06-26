@@ -63,7 +63,7 @@ const Hamburger = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-                Homessss
+                Homes
               </Link>
             </li>
             <li>
