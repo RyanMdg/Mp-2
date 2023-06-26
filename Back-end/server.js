@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import productsRouter from "./routers/products.js";
 import shopRouter from "./routers/shops.js";
 import mongoose from "mongoose";
+import cors from "cors";
 dotenv.config();
 
 const app = express();
@@ -12,6 +13,7 @@ const app = express();
 app.use(express.json());
 
 app.use(morgan("dev"));
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("this is home");
