@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const productList = () => {
   const crumbs = [
-    { label: "Dashboard /", path: "/" },
+    { label: "Dashboard /", path: "/home" },
     { label: "Products List", path: "/productlist" },
   ];
 

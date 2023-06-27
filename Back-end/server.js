@@ -5,7 +5,9 @@ import productsRouter from "./routers/products.js";
 import shopRouter from "./routers/shops.js";
 import UserRouter from "./routers/user.js";
 import mongoose from "mongoose";
+
 import cors from "cors";
+
 import { log } from "mercedlogger";
 dotenv.config();
 

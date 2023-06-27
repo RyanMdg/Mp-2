@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import User from "../models/usersSchema.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import passport from "passport";
 dotenv.config();
 
 const { SECRET = "secret" } = process.env;
@@ -26,12 +27,11 @@ const login = async (req, res) => {
     // check if the user exists
     const user = await User.findOne({ username: req.body.username });
     if (user) {
-      //check if password matches
       const result = await bcrypt.compare(req.body.password, user.password);
       if (result) {
         // sign token and send it in response
         const token = await jwt.sign({ username: user.username }, SECRET);
-        res.json({ token, mssg: "login successful!" });
+        res.json({ token });
       } else {
         res.status(400).json({ error: "password doesn't match" });
       }
@@ -42,7 +42,6 @@ const login = async (req, res) => {
     res.status(400).json({ error });
   }
 };
-
 export default {
   sign_Up,
   login,

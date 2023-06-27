@@ -57,7 +57,7 @@ const Hamburger = () => {
         <div className="py-4 px-6 bg-slate-700 h-screen">
           <ul className="space-y-2">
             <li>
-              <Link href="/" className="flex items-center py-2 text-white">
+              <Link href="/home" className="flex items-center py-2 text-white">
                 <svg
                   className="h-5 w-5 mr-2"
                   viewBox="0 0 20 20"
