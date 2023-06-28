@@ -5,6 +5,12 @@ import productsRouter from "./routers/products.js";
 import shopRouter from "./routers/shops.js";
 import UserRouter from "./routers/user.js";
 import mongoose from "mongoose";
+import prodController from "./controllers/productController.js";
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 import cors from "cors";
 
@@ -19,9 +25,8 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send("this is home");
-});
+app.get("/react", prodController.postReact);
+app.use("/upload", express.static(path.join(__dirname, "upload")));
 
 // * Router for products restful
 app.use("/products", productsRouter);

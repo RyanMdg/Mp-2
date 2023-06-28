@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 
 const ProductForm = () => {
   const [formData, setFormData] = useState({
@@ -9,22 +9,33 @@ const ProductForm = () => {
     description: "",
   });
 
+  const [image, setImage] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
+  const handleFileChange = (event) => {
+    setImage(event.target.files[0]);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // Retrieve the token from storage
       const token = localStorage.getItem("token");
+
+      const formDataWithImage = new FormData();
+      formDataWithImage.append("productName", formData.productName);
+      formDataWithImage.append("price", formData.price);
+      formDataWithImage.append("stock", formData.stock);
+      formDataWithImage.append("description", formData.description);
+      formDataWithImage.append("image", image);
 
       const response = await axios.post(
         "http://localhost:3001/products/productadd",
-        formData,
+        formDataWithImage,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -34,7 +45,8 @@ const ProductForm = () => {
 
       console.log("Response:", response.data);
       setShowModal(true);
-      setFormData({ productName: "", price: 0, stock: 0 });
+      setFormData({ productName: "", price: 0, stock: 0, description: "" });
+      setImage(null);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -124,8 +136,8 @@ const ProductForm = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="image"
             type="file"
-            accept="image/*"
-            onChange={(e) => setImage(e.target.files[0])}
+            accept=".png, .jpg, .jpeg"
+            onChange={handleFileChange}
           />
         </div>
         <button className=" text-white bg-slate-600 hover:bg-slate-700 transition p-3 rounded-md">

@@ -1,34 +1,40 @@
 import React, { useState } from "react";
-import { HiMenuAlt3 } from "react-icons/hi";
+import { HiMenuAlt3, HiOutlineShoppingBag } from "react-icons/hi";
 import { MdOutlineDashboard } from "react-icons/md";
 import { RiSettings4Line } from "react-icons/ri";
 import { TbReportAnalytics } from "react-icons/tb";
-import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineUser, AiOutlineHeart, AiOutlineHome } from "react-icons/ai";
 import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
+import Compo from "../src/app/components/hero";
+import ProdApi from "../src/app/components/Three-grid";
 import Link from "next/link";
 import "../src/app/globals.css";
-import Hero from "../src/app/components/hero";
 
 const Home = () => {
   const menus = [
-    { name: "dashboard", link: "/", icon: MdOutlineDashboard },
-    { name: "user", link: "/", icon: AiOutlineUser },
+    { name: "Home", link: "/", icon: AiOutlineHome },
+    { name: "Products", link: "/", icon: HiOutlineShoppingBag },
     { name: "messages", link: "/", icon: FiMessageSquare },
-    { name: "analytics", link: "/", icon: TbReportAnalytics, margin: true },
-    { name: "File Manager", link: "/", icon: FiFolder },
     { name: "Cart", link: "/", icon: FiShoppingCart },
     { name: "Saved", link: "/", icon: AiOutlineHeart, margin: true },
     { name: "Setting", link: "/", icon: RiSettings4Line },
   ];
   const [open, setOpen] = useState(true);
+
+  const navbarClassName = `bg-[#0e0e0e] h-full ${
+    open ? "w-40" : "w-16"
+  } duration-500 text-gray-100 px-2 fixed top-0 left-0 z-50`;
+
   return (
-    <section className="flex">
-      <div
-        className={`bg-[#0e0e0e] h-screen ${
-          open ? "w-72" : "w-16"
-        } duration-500 text-gray-100 px-4`}
-      >
-        <div className="py-3 flex justify-end">
+    <section className="flex  h-screen  ">
+      <Link rel="preconnect" href="https://fonts.googleapis.com" />
+      <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <Link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+      <div className={navbarClassName}>
+        <div className="py-3 left flex justify-end">
           <HiMenuAlt3
             size={26}
             className="cursor-pointer"
@@ -40,7 +46,7 @@ const Home = () => {
             <Link
               href={menu?.link}
               key={i}
-              className={` ${
+              className={`${
                 menu?.margin && "mt-5"
               } group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md`}
             >
@@ -66,8 +72,9 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <div>
-        <Hero />
+      <div className=" pl-10">
+        <Compo />
+        <ProdApi />
       </div>
     </section>
   );

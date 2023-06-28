@@ -1,6 +1,6 @@
 import prodSchema from "../models/productSchema.js";
 
-// * GET PRODUCTLIST
+// * GET PRODUCT LIST
 const productsList = (req, res) => {
   prodSchema
     .find()
@@ -13,7 +13,19 @@ const productsList = (req, res) => {
     });
 };
 
-// * GET SINGLE PRODUCTS
+const postReact = (req, res) => {
+  prodSchema
+    .find()
+    .sort({ createdAt: -1 })
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+// * GET SINGLE PRODUCT
 const productsSingle = (req, res) => {
   const id = req.params.id;
 
@@ -22,10 +34,10 @@ const productsSingle = (req, res) => {
     .then((result) => {
       res.status(200).json(result);
     })
-    .catch((err) => res.status(404).json({ error: "Product Don't Exis" }));
+    .catch((err) => res.status(404).json({ error: "Product doesn't exist" }));
 };
 
-// * DELETE PRODUCTS
+// * DELETE PRODUCT
 const productsDelete = (req, res) => {
   const id = req.params.id;
 
@@ -37,39 +49,39 @@ const productsDelete = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-// * UPDATE PRODUCTS
+// * UPDATE PRODUCT
 const productsUpdate = (req, res) => {
   const id = req.params.id;
   const updatedProducts = req.body;
-
-  const product = prodSchema.find(id);
 
   prodSchema
     .findByIdAndUpdate(id, updatedProducts, {
       new: true,
     })
-    .then((updatedProducts) => {
-      if (updatedProducts) {
+    .then((updatedProduct) => {
+      if (updatedProduct) {
         res.json({ message: "Product updated successfully" });
       } else {
         res.status(404).json({ error: "Product not found" });
       }
     })
-    .catch((err) => res.status(404).json({ error: "PRODUCT NOT FIND!" }));
+    .catch((err) => res.status(404).json({ error: "Product not found" }));
 };
 
-// * ADDED PRODUCTS
+// * ADD PRODUCT
 const productsAdded = async (req, res) => {
-  const { productName, price, stock, description } = req.body;
-
   try {
-    const products = await prodSchema.create({
+    const { productName, price, stock, description } = req.body;
+
+    const product = await prodSchema.create({
       productName,
       price,
       stock,
       description,
+      image: req.file.path, // Save the file path in the "image" field of the product schema
     });
-    res.status(200).json(products);
+
+    res.status(200).json(product);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -81,4 +93,5 @@ export default {
   productsDelete,
   productsUpdate,
   productsAdded,
+  postReact,
 };
