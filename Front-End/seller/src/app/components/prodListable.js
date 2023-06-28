@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import axios from "axios";
 import productList from "./prodList";
 import productlist from "../../../pages/productlist";
@@ -8,6 +9,8 @@ const Table = () => {
   const [productsList, setproductsList] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
+
+  const router = useRouter();
 
   const handleDelete = async (id) => {
     try {
@@ -23,29 +26,31 @@ const Table = () => {
   };
 
   useEffect(() => {
-    const handleDelete = async () => {
+    const fetchProductlist = async () => {
       try {
-        const response = await axios.delete(
-          `http://localhost:3001/products/productlist/${productList.id}`
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+          router.push("/");
+        }
+
+        const response = await axios.get(
+          "http://localhost:3001/products/productlist",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
-        console.log("Response:", response.data);
-        handleDelete(productList);
-        // Perform any additional actions after successful deletion
+
+        setproductsList(response.data);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error:", error);
       }
     };
 
-    const fetchProductlist = async () => {
-      const response = await axios.get(
-        "http://localhost:3001/products/productlist"
-      );
-      setproductsList(response.data);
-      setIsLoading(false);
-    };
-
     fetchProductlist();
-    handleDelete();
   }, []);
 
   return (

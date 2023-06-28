@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import User from "../models/usersSchema.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import passport from "passport";
+
 dotenv.config();
 
 const { SECRET = "secret" } = process.env;

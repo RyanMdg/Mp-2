@@ -3,7 +3,7 @@ import prodController from "../controllers/productController.js";
 import isLoggedIn from "../controllers/middleware.js";
 const router = exprss.Router();
 
-router.use(isLoggedIn.isLoggedIn);
+router.use(isLoggedIn);
 
 //* GET LIST OF PRODUCTS
 router.get("/productlist", prodController.productsList);
@@ -12,7 +12,11 @@ router.get("/productlist", prodController.productsList);
 router.get("/productlist/:id", prodController.productsSingle);
 
 //* DELETE PRODUCTS
-router.delete("/productlist/:id", prodController.productsDelete);
+router.delete(
+  "/productlist/:id",
+
+  prodController.productsDelete
+);
 
 //* UPDATE PRODUCTS
 router.patch("/productlist/:id", prodController.productsUpdate);

@@ -19,10 +19,19 @@ const ProductForm = () => {
     e.preventDefault();
 
     try {
+      // Retrieve the token from storage
+      const token = localStorage.getItem("token");
+
       const response = await axios.post(
         "http://localhost:3001/products/productadd",
-        formData
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
+
       console.log("Response:", response.data);
       setShowModal(true);
       setFormData({ productName: "", price: 0, stock: 0 });

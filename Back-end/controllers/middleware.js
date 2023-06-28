@@ -1,34 +1,31 @@
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
-
 dotenv.config();
 
-// CREATE CONTEXT MIDDLEWARE
-// MIDDLEWARE FOR AUTHORIZATION (MAKING SURE THEY ARE LOGGED IN)
-const isLoggedIn = async (req, res, next) => {
+const isLoggedIn = (req, res, next) => {
   try {
-    // check if auth header exists
-    if (req.headers.authorization) {
-      // parse token from header
-      const token = req.headers.authorization.split(" ")[1]; //split the header and get the token
-      if (token) {
-        const payload = jwt.verify(token, process.env.SECRET);
-        if (payload) {
-          // store user data in request object
-          req.user = payload;
-          next();
-        } else {
-          res.status(400).json({ error: "token verification failed" });
-        }
-      } else {
-        res.status(400).json({ error: "malformed auth header" });
-      }
-    } else {
-      res.status(400).json({ error: "No authorization header" });
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      return res.status(401).json({ error: "Invalid authorization header" });
     }
+
+    const token = authHeader.split(" ")[1];
+
+    jwt.verify(token, process.env.SECRET, (err, payload) => {
+      if (err) {
+        if (err.name === "TokenExpiredError") {
+          return res.status(401).json({ error: "Expired token" });
+        }
+        return res.status(401).json({ error: "Invalid token" });
+      }
+
+      req.user = payload;
+      next();
+    });
   } catch (error) {
-    res.status(400).json({ error });
+    res.status(500).json({ error: "Something went wrong" });
   }
 };
 
-export default { isLoggedIn };
+export default isLoggedIn;

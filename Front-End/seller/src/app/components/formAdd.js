@@ -1,6 +1,8 @@
 import Breadcrumb from "./breadcrumps";
 import AddForm from "./formAddProduct";
+import { useRouter } from "next/router";
 import { useState } from "react";
+import { useEffect } from "react";
 
 const formAdd = () => {
   const crumbs = [
@@ -13,6 +15,14 @@ const formAdd = () => {
   const handleFormSubmit = (newData) => {
     setFormData([...formData, newData]);
   };
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.push("/");
+    }
+  }, []);
 
   return (
     <div className=" my-5 mx-20">
