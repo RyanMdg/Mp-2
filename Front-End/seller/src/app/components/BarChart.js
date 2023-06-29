@@ -33,7 +33,7 @@ export default function BarChart() {
                 datasets: [
                     {
                         label: 'Sales Php',
-                        data: [10125,2999,3999,5667,8960,89789,97906],
+                        data: [10125,2999,3999,5667,8960,8989,9796],
                         borderColor: 'rgb(53, 162,235)',
                         backgroundColor: 'rgb(53,162,235,0.4)',
                     },
