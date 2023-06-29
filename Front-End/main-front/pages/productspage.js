@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import { HiMenuAlt3, HiOutlineShoppingBag } from "react-icons/hi";
-import { MdOutlineDashboard } from "react-icons/md";
 import { RiSettings4Line } from "react-icons/ri";
-import { TbReportAnalytics } from "react-icons/tb";
 import { AiOutlineUser, AiOutlineHeart, AiOutlineHome } from "react-icons/ai";
 import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
-import Compo from "../src/app/components/hero";
-import ProdApi from "../src/app/components/Three-grid";
+import ProductComponent from "@/app/components/productComponent";
+
 import Link from "next/link";
 import "../src/app/globals.css";
 
 const Home = () => {
   const menus = [
     { name: "Home", link: "/", icon: AiOutlineHome },
-    { name: "Products", link: "/productspage", icon: HiOutlineShoppingBag },
+    { name: "Products", link: "/productpage", icon: HiOutlineShoppingBag },
     { name: "messages", link: "/", icon: FiMessageSquare },
     { name: "Cart", link: "/", icon: FiShoppingCart },
     { name: "Saved", link: "/", icon: AiOutlineHeart, margin: true },
@@ -72,9 +70,8 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <div className=" pl-10">
-        <Compo />
-        <ProdApi />
+      <div className="">
+        <ProductComponent />
       </div>
     </section>
   );

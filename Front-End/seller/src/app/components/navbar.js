@@ -1,18 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import "../globals.css";
+import axios from "axios";
 
 const handleLogout = () => {
   localStorage.removeItem("token"); // Remove the token from local storage
   // Redirect to the login page
 };
 
-const Hamburger = () => {
+const Hamburger = ({ id }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen1, setIsDropdownOpen1] = useState(false);
   const [isDropdownOpen2, setIsDropdownOpen2] = useState(false);
+  const [userList, setUsersList] = useState(null);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -25,6 +27,21 @@ const Hamburger = () => {
   const toggleDropdown2 = () => {
     setIsDropdownOpen2(!isDropdownOpen2);
   };
+
+  useEffect(() => {
+    const fetchUserList = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3001/user/user/${id}`
+        );
+        setUsersList(response.data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    fetchUserList();
+  }, [id]);
 
   return (
     <div className="flex bg-white drop-shadow-lg h-16">
@@ -245,16 +262,20 @@ const Hamburger = () => {
             />
           </svg>
         </button>
-        <div
-          className={`flex flex-col me-4 justify-center  ${
-            isOpen ? "inline-block" : "block"
-          }`}
-        >
-          <h1 className=" font-bold">costumer.name</h1>
-          <span className=" text-gray-500 text-sm text-center">
-            costumer.email
-          </span>
-        </div>
+        {userList &&
+          userList.map((user) => (
+            <div
+              key={user._id}
+              className={`flex flex-col me-4 justify-center  ${
+                isOpen ? "inline-block" : "block"
+              }`}
+            >
+              <h1 className=" font-bold">{user.username}</h1>
+              <span className=" text-gray-500 text-sm text-center">
+                {user.email}
+              </span>
+            </div>
+          ))}
       </div>
     </div>
   );

@@ -22,6 +22,28 @@ const sign_Up = async (req, res) => {
   }
 };
 
+// *  Get single user
+const singleUser = (req, res) => {
+  const id = req.params.id;
+
+  if (!id) {
+    return res.status(400).json({ error: "Missing id parameter" });
+  }
+
+  User.findById(id)
+    .then((result) => {
+      if (result) {
+        res.status(200).json(result);
+      } else {
+        res.status(404).json({ error: "User not found" });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({ error: "Internal server error" });
+    });
+};
+
+// *login users
 const login = async (req, res) => {
   try {
     // check if the user exists
@@ -45,4 +67,5 @@ const login = async (req, res) => {
 export default {
   sign_Up,
   login,
+  singleUser,
 };

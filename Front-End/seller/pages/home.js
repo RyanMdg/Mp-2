@@ -1,7 +1,7 @@
 import Navbar from "../src/app/components/navbar";
 import "../src/app/globals.css";
 import { useState } from "react";
-import Dashboard from "../src/app/components/dashBoard"
+import Dashboard from "../src/app/components/dashBoard";
 
 const dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,13 +9,14 @@ const dashboard = () => {
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <main>
       <title>Dashboard</title>
 
       <Navbar />
       <section>
-       <Dashboard/>
+        <Dashboard />
       </section>
     </main>
   );
