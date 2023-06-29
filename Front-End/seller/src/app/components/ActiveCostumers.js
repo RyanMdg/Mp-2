@@ -2,20 +2,20 @@ import React from 'react';
 
 const ActiveUsersTable = ({ activeUsers }) => {
   return (
-    <table>
+    <table className='border border-collapse w-[71vh]'>
       <thead>
-        <tr>
-          <th>User ID</th>
-          <th>Name</th>
-          <th>Email</th>
+        <tr className="bg-blue-200">
+          <th className="border p-2">User ID</th>
+          <th className="border p-2">Name</th>
+          <th className="border p-2">Email address</th>
         </tr>
       </thead>
       <tbody>
         {activeUsers.map((user) => (
           <tr key={user.id}>
-            <td>{user.id}</td>
-            <td>{user.name}</td>
-            <td>{user.email}</td>
+            <td className="border p-2">{user.id}</td>
+            <td className="border p-2">{user.name}</td>
+            <td className="border p-2">{user.email}</td>
           </tr>
         ))}
       </tbody>
