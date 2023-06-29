@@ -1,5 +1,6 @@
 import "../globals.css";
 import Breadcrumb from "./breadcrumps";
+import Productlist from "./productList";
 
 const ProductComponent = () => {
   const crumbs = [
@@ -65,6 +66,9 @@ const ProductComponent = () => {
       </div>
       <div className=" ps-24 pt-5">
         <Breadcrumb crumbs={crumbs} />
+        <div className=" m-14">
+          <Productlist />
+        </div>
       </div>
     </div>
   );
