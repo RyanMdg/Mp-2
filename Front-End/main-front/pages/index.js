@@ -19,7 +19,7 @@ const Home = () => {
     { name: "Saved", link: "/", icon: AiOutlineHeart, margin: true },
     { name: "Setting", link: "/", icon: RiSettings4Line },
   ];
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const navbarClassName = `bg-[#0e0e0e] h-full ${
     open ? "w-40" : "w-16"

@@ -11,13 +11,13 @@ import "../src/app/globals.css";
 const Home = () => {
   const menus = [
     { name: "Home", link: "/", icon: AiOutlineHome },
-    { name: "Products", link: "/productpage", icon: HiOutlineShoppingBag },
+    { name: "Products", link: "/productspage", icon: HiOutlineShoppingBag },
     { name: "messages", link: "/", icon: FiMessageSquare },
     { name: "Cart", link: "/", icon: FiShoppingCart },
     { name: "Saved", link: "/", icon: AiOutlineHeart, margin: true },
     { name: "Setting", link: "/", icon: RiSettings4Line },
   ];
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const navbarClassName = `bg-[#0e0e0e] h-full ${
     open ? "w-40" : "w-16"
