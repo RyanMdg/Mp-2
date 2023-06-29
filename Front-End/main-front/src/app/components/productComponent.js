@@ -64,11 +64,11 @@ const ProductComponent = () => {
           </div>
         </div>
       </div>
-      <div className=" ps-24 pt-5">
-        <Breadcrumb crumbs={crumbs} />
-        <div className=" m-14">
-          <Productlist />
+      <div className=" ">
+        <div className=" flex justify-center relative right-1/4">
+          <Breadcrumb crumbs={crumbs} />
         </div>
+        <Productlist />
       </div>
     </div>
   );

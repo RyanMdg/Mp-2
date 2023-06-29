@@ -25,6 +25,17 @@ const postReact = (req, res) => {
     });
 };
 
+const singleReact = (req, res) => {
+  const id = req.params.id;
+
+  prodSchema
+    .findById(id)
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => res.status(404).json({ error: "Product doesn't exist" }));
+};
+
 // * GET SINGLE PRODUCT
 const productsSingle = (req, res) => {
   const id = req.params.id;
@@ -94,4 +105,5 @@ export default {
   productsUpdate,
   productsAdded,
   postReact,
+  singleReact,
 };

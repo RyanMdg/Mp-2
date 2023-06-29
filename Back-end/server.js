@@ -26,6 +26,8 @@ app.use(morgan("dev"));
 app.use(cors());
 
 app.get("/react", prodController.postReact);
+app.get("/react/single/:id", prodController.singleReact);
+
 app.use("/upload", express.static(path.join(__dirname, "upload")));
 
 // * Router for products restful

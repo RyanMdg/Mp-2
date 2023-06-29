@@ -9,6 +9,8 @@ import Compo from "../src/app/components/hero";
 import ProdApi from "../src/app/components/Three-grid";
 import Link from "next/link";
 import "../src/app/globals.css";
+import ProdList from "../src/app/components/productList";
+import Productpage from "../src/app/components/productpage";
 
 const Home = () => {
   const menus = [

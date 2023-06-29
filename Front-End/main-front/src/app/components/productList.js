@@ -1,44 +1,51 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Link from "next/link";
 
-const prodList = () => {
-  const [productsList, setproductsList] = useState(null);
+const ProdList = () => {
+  const [productsList, setProductsList] = useState(null);
 
   useEffect(() => {
-    const fetchProductlist = async () => {
+    const fetchProductList = async () => {
       try {
         const response = await axios.get("http://localhost:3001/react");
-
-        setproductsList(response.data);
+        setProductsList(response.data);
       } catch (error) {
         console.error("Error:", error);
       }
     };
-
-    fetchProductlist();
+    fetchProductList();
   }, []);
 
   return (
-    <div className="flex justify-center gap-6 m-10">
-      {productsList &&
+    <div className="grid grid-cols-4 mt-5">
+      {productsList ? (
         productsList.map((product) => (
-          <div key={product.id} className=" ms-10 mb-10">
+          <Link
+            className="flex flex-col items-center ms-10 mb-10"
+            key={product.id}
+            href={`/product/${product._id}`}
+            passHref
+          >
             <img
-              className=" w-60"
+              className="w-60"
               src={`http://localhost:3001/${product.image}`}
               alt=""
             />
 
-            <div className=" flex flex-col items-center gap-2">
-              <h1 className=" font-semibold text-xl text-slate-500">
+            <div className="flex flex-col items-center gap-2">
+              <h1 className="font-semibold text-xl text-slate-500">
                 {product.productName}
               </h1>
-              <span className=" text-lg"> ₱{product.price}</span>
+              <span className="text-lg">₱{product.price}</span>
             </div>
-          </div>
-        ))}
+          </Link>
+        ))
+      ) : (
+        <div>lofainf</div>
+      )}
     </div>
   );
 };
 
-export default prodList;
+export default ProdList;
