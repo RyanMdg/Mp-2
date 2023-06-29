@@ -9,22 +9,9 @@ const SignupLogin = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   const router = useRouter();
-
-  const handleSignup = async () => {
-    try {
-      const response = await axios.post("http://localhost:3001/user/signup", {
-        username,
-        password,
-        email,
-      });
-      console.log(response.data); // Assuming the response returns the user object
-      // Handle success or redirect to another page
-    } catch (error) {
-      setError(error.response.data.error);
-    }
-  };
 
   const handleLogin = async () => {
     try {
@@ -33,20 +20,15 @@ const SignupLogin = () => {
         password,
         email,
       });
+
       const token = response.data.token; // Assuming the response returns the token
       localStorage.setItem("token", token); // Store the token in local storage
       router.push("/home");
     } catch (error) {
       console.log(error);
+      setShowModal(true);
     }
   };
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      router.push("/");
-    }
-  }, []);
 
   return (
     <div className="flex bg-zinc-500 flex-col justify-center items-center h-screen">
@@ -88,6 +70,23 @@ const SignupLogin = () => {
           </button>
         </div>
       </div>
+
+      {/* MODAL SHOWING WHEN LOGIN NOT EXIST  */}
+      {showModal && (
+        <div className="fixed inset-0 bg-slate-500 bg-opacity-60 ease-in flex items-center justify-center z-50">
+          <div className="bg-white rounded shadow-md p-8 transition-opacity duration-300">
+            <h2 className="text-lg font-bold mb-4 ">
+              <span className=" text-red-500">Wrong!</span> username or password{" "}
+            </h2>
+            <button
+              className="text-white  bg-slate-600 hover:bg-slate-700 transition p-3 rounded-md mt-4"
+              onClick={() => setShowModal(false)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -14,7 +14,13 @@ const Table = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3001/products/productlist/${id}`);
+      const token = localStorage.getItem("token");
+      await axios.delete(`http://localhost:3001/products/productlist/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
       setproductsList((prevProductsList) =>
         prevProductsList.filter((product) => product._id !== id)
       );
@@ -78,7 +84,7 @@ const Table = () => {
               <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold uppercase tracking-wider">
                 Stock
               </th>
-              <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold uppercase tracking-wider">
+              <th className="px-5 py-3 text-center border-b-2 border-gray-200 bg-gray-100  text-xs font-semibold uppercase tracking-wider">
                 Image
               </th>
               <th className=" text-center px-5 py-3 border-b-2 border-gray-200 bg-gray-100  text-xs font-semibold uppercase tracking-wider">
@@ -99,12 +105,18 @@ const Table = () => {
                   <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                     {item.stock}
                   </td>
-                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    {item.stock}
+                  <td className="px-5 py-5  border-b border-gray-200 bg-white text-sm">
+                    <div className=" flex justify-center">
+                      <img
+                        className=" w-36"
+                        src={`http://localhost:3001/${item.image}`}
+                        alt=""
+                      />
+                    </div>
                   </td>
 
-                  <td className=" justify-center px-5 flex gap-4 py-5 border-b border-gray-200 bg-white text-sm">
-                    <button className=" bg-yellow-600 p-2 text-white rounded-md font-semibold">
+                  <td className=" flex justify-center px-5 ms-10 gap-4 py-5 border-b border-gray-200 bg-white text-sm">
+                    <button className=" me-3 bg-yellow-600 p-2 text-white rounded-md font-semibold">
                       Update Product
                     </button>
                     <button

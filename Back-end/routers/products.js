@@ -1,6 +1,7 @@
 import exprss from "express";
 import prodController from "../controllers/productController.js";
 import isLoggedIn from "../controllers/middleware.js";
+import upload from "../controllers/uploadMiddleware.js";
 const router = exprss.Router();
 
 router.use(isLoggedIn);
@@ -12,17 +13,17 @@ router.get("/productlist", prodController.productsList);
 router.get("/productlist/:id", prodController.productsSingle);
 
 //* DELETE PRODUCTS
-router.delete(
-  "/productlist/:id",
-
-  prodController.productsDelete
-);
+router.delete("/productlist/:id", prodController.productsDelete);
 
 //* UPDATE PRODUCTS
 router.patch("/productlist/:id", prodController.productsUpdate);
 
 //* POST NEW PRODUCTS
 
-router.post("/productadd", prodController.productsAdded);
+router.post(
+  "/productadd",
+  upload.single("image"),
+  prodController.productsAdded
+);
 
 export default router;

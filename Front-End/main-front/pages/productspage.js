@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import { HiMenuAlt3, HiOutlineShoppingBag } from "react-icons/hi";
-import { MdOutlineDashboard } from "react-icons/md";
 import { RiSettings4Line } from "react-icons/ri";
-import { TbReportAnalytics } from "react-icons/tb";
 import { AiOutlineUser, AiOutlineHeart, AiOutlineHome } from "react-icons/ai";
 import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
-import Compo from "../src/app/components/components";
+import ProductComponent from "@/app/components/productComponent";
+
 import Link from "next/link";
 import "../src/app/globals.css";
 
 const Home = () => {
   const menus = [
     { name: "Home", link: "/", icon: AiOutlineHome },
-    { name: "Products", link: "/", icon: HiOutlineShoppingBag },
+    { name: "Products", link: "/productpage", icon: HiOutlineShoppingBag },
     { name: "messages", link: "/", icon: FiMessageSquare },
     { name: "Cart", link: "/", icon: FiShoppingCart },
     { name: "Saved", link: "/", icon: AiOutlineHeart, margin: true },
@@ -26,6 +25,12 @@ const Home = () => {
 
   return (
     <section className="flex  h-screen  ">
+      <Link rel="preconnect" href="https://fonts.googleapis.com" />
+      <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <Link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
       <div className={navbarClassName}>
         <div className="py-3 left flex justify-end">
           <HiMenuAlt3
@@ -65,8 +70,8 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <div>
-        <Compo />
+      <div className="">
+        <ProductComponent />
       </div>
     </section>
   );

@@ -1,13 +1,16 @@
 import exprss from "express";
 
-import shopController from "../controllers/userController.js";
+import userController from "../controllers/userController.js";
 
 const router = exprss.Router();
 
 // Signup route to create a new user
-router.post("/signup", shopController.sign_Up);
+router.post("/signup", userController.sign_Up);
 
 // Login route to verify a user and get a token
-router.post("/login", shopController.login);
+router.post("/login", userController.login);
+
+// Get a single user
+router.get("/user/:id", userController.singleUser);
 
 export default router;
