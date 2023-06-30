@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { HiMenuAlt3, HiOutlineShoppingBag } from "react-icons/hi";
 import { RiSettings4Line } from "react-icons/ri";
-import { FiMessageSquare, FiShoppingCart } from "react-icons/fi";
+import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
 import { AiOutlineHome, AiOutlineHeart } from "react-icons/ai";
 import Link from "next/link";
-import "../globals.css";
-import CartPage from "../../../pages/cartpage";
-import SingleProduct from "./productsingle";
+import "../src/app/globals.css";
+import CartItems from "./cartpage";
 
-const Home = ({ onAddToCart }) => {
+const Home = () => {
   const menus = [
     { name: "Home", link: "/", icon: AiOutlineHome },
     { name: "Products", link: "/productspage", icon: HiOutlineShoppingBag },
@@ -24,12 +23,14 @@ const Home = ({ onAddToCart }) => {
     open ? "w-40" : "w-16"
   } duration-500 text-gray-100 px-2 fixed top-0 left-0 z-50`;
 
-  const handleAddToCart = (product) => {
-    setCartItems([...cartItems, product]);
-  };
-
   return (
-    <section className="flex h-screen">
+    <section className="flex  h-screen  ">
+      <Link rel="preconnect" href="https://fonts.googleapis.com" />
+      <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <Link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
       <div className={navbarClassName}>
         <div className="py-3 left flex justify-end">
           <HiMenuAlt3
@@ -68,15 +69,9 @@ const Home = ({ onAddToCart }) => {
             </Link>
           ))}
         </div>
-        {cartItems.length > 0 && (
-          <div className="absolute top-[13.7rem] right-4 bg-red-500 text-white rounded-full h-5 w-5 flex items-center justify-center text-xs font-bold">
-            {cartItems.length}
-          </div>
-        )}
       </div>
-      <div className="pl-10">
-        {/* Render the CartPage component with cartItems */}
-        <SingleProduct onAddToCart={handleAddToCart} />
+      <div className="flex justify-center items-center pl-10 w-screen h-screen">
+        <CartItems cartItems={cartItems} />
       </div>
     </section>
   );

@@ -28,6 +28,7 @@ const Home = () => {
 
   return (
     <section className="flex  h-screen  ">
+      <title>TGH | Home</title>
       <Link rel="preconnect" href="https://fonts.googleapis.com" />
       <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <Link

@@ -23,11 +23,7 @@ const app = express();
 app.use(express.json());
 
 app.use(morgan("dev"));
-app.use(
-  cors({
-    origin: [],
-  })
-);
+app.use(cors());
 
 app.get("/react", prodController.postReact);
 app.get("/react/single/:id", prodController.singleReact);
