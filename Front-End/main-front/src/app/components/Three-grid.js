@@ -26,9 +26,9 @@ const threegrid = () => {
 
   return (
     <div>
-      <div className="flex mt-10  justify-center">
-        <div className="bg-[#fe9737b1] clip-[2rem] relative top-5 h-10 w-14"></div>
-        <h1 className="">Top Products</h1>
+      <div className="flex mt-10 flex-col items-center">
+        <h1 className=" ">Top Products</h1>
+        <div className="bg-[#fe9737b1]  relative bottom-5 h-10 w-14"></div>
       </div>
       <div className="grid md:grid-cols-4 w-[90%] m-10">
         {limitedProducts &&
