@@ -41,10 +41,10 @@ const dash = () => {
             
            
         </div>
-        <div className='p-4 grid md:grid-cols-3 grid-cols-1 gap-4'>
+        <div className='p-4 grid lg:grid-cols-3 md:w-[100%] flex-shrink grid-cols-1 gap-4 mb-10  '>
                 <BarChart />
                 <CostumersInput />
-                </div>
+        </div>
               
     </div> 
     

@@ -11,6 +11,7 @@ import Link from "next/link";
 import "../src/app/globals.css";
 import ProdList from "../src/app/components/productList";
 import Productpage from "../src/app/components/productpage";
+import FourthSec from "../src/app/components/fourthSec";
 
 const Home = () => {
   const menus = [
@@ -77,6 +78,7 @@ const Home = () => {
       <div className=" pl-10">
         <Compo />
         <ProdApi />
+        <FourthSec />
       </div>
     </section>
   );
