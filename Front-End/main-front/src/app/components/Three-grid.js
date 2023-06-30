@@ -22,7 +22,7 @@ const threegrid = () => {
     fetchProductList();
   }, []);
 
-  const limitedProducts = productsList && productsList.slice(0, 3);
+  const limitedProducts = productsList && productsList.slice(0, 4);
 
   return (
     <div className="flex justify-center gap-7 m-10">
