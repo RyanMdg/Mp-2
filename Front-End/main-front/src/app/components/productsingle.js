@@ -89,11 +89,14 @@ const SingleProduct = ({ onAddToCart }) => {
             </p>
             <div className="flex gap-10 mt-7 items-center">
               <p className="text-[#54524db8]">Stock: {product.stock}</p>
-              <QuantityButton
-                quantity={quantity}
-                increaseQuantity={increaseQuantity}
-                decreaseQuantity={decreaseQuantity}
-              />
+              <div className=" text-[#54524db8] items-center flex gap-1">
+                Qty:
+                <QuantityButton
+                  quantity={quantity}
+                  increaseQuantity={increaseQuantity}
+                  decreaseQuantity={decreaseQuantity}
+                />
+              </div>
             </div>
             <div className="flex mt-5 gap-20 justify-center">
               <button

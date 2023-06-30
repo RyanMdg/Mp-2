@@ -1,6 +1,7 @@
 import "../globals.css";
 import Breadcrumb from "./breadcrumps";
 import Productlist from "./productList";
+import fonts from "../globals.css";
 
 const ProductComponent = () => {
   const crumbs = [

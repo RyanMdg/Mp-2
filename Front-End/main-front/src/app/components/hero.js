@@ -12,9 +12,12 @@ const Hero = () => {
             <p className="text-lg text-black mb-8 ">
               Bringing Freshness to Your Doorstep
             </p>
-            <button className=" text-black border border-black font-bold py-2 px-4 rounded">
+            <a
+              href="/productspage"
+              className=" hover:translate-y-[-.2rem] duration-300 hover:text-white hover:bg-[#333333] text-black border border-black font-bold py-2 px-4 rounded"
+            >
               Shop Now
-            </button>
+            </a>
           </div>
         </div>
       </div>

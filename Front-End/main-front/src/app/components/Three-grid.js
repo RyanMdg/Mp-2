@@ -25,30 +25,36 @@ const threegrid = () => {
   const limitedProducts = productsList && productsList.slice(0, 4);
 
   return (
-    <div className="flex justify-center gap-7 m-10">
-      {limitedProducts &&
-        limitedProducts.map((product) => (
-          <Link
-            href={`/product/${product._id}`}
-            key={product.id}
-            className="ms-10 border border-[#605e5e46] rounded-md p-2 mb-10"
-          >
-            <img
-              className="w-60 mb-3"
-              src={`http://localhost:3001/${product.image}`}
-              alt=""
-            />
+    <div>
+      <div className="flex mt-10  justify-center">
+        <div className="bg-[#fe9737b1] clip-[2rem] relative top-5 h-10 w-14"></div>
+        <h1 className="">Top Products</h1>
+      </div>
+      <div className="grid md:grid-cols-4 w-[90%] m-10">
+        {limitedProducts &&
+          limitedProducts.map((product) => (
+            <Link
+              href={`/product/${product._id}`}
+              key={product.id}
+              className="ms-10 flex flex-col items-center border border-[#605e5e46] shadow-lg hover:translate-y-[-1rem] duration-300 transition-all rounded-md mb-10"
+            >
+              <img
+                className="w-fit overflow-hidden mb-3"
+                src={`http://localhost:3001/${product.image}`}
+                alt=""
+              />
 
-            <div className="flex flex-col items-center gap-2">
-              <h1 className=" text-[1rem] text-[#605e5e]">
-                {product.productName}
-              </h1>
-              <span className="text-[1.1rem] text-[#605e5eb5]">
-                ₱{product.price}
-              </span>
-            </div>
-          </Link>
-        ))}
+              <div className="flex flex-col items-center gap-2">
+                <h1 className="text-[1rem] text-[#605e5e]">
+                  {product.productName}
+                </h1>
+                <span className="text-[1.1rem] text-[#605e5eb5]">
+                  ₱{product.price}
+                </span>
+              </div>
+            </Link>
+          ))}
+      </div>
     </div>
   );
 };
