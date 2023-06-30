@@ -4,12 +4,14 @@ import Link from "next/link";
 
 const ProdList = () => {
   const [productsList, setProductsList] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchProductList = async () => {
       try {
         const response = await axios.get("http://localhost:3001/react");
         setProductsList(response.data);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error:", error);
       }
@@ -19,7 +21,11 @@ const ProdList = () => {
 
   return (
     <div className="grid grid-cols-4 mt-5">
-      {productsList ? (
+      {isLoading ? (
+        <div className="flex items-center w-screen justify-center h-full">
+          <div className="animate-spin rounded-full h-20 w-20 border-t-2 border-b-2 border-gray-900"></div>
+        </div>
+      ) : productsList ? (
         productsList.map((product) => (
           <Link
             className="flex flex-col items-center ms-10 mb-10"
@@ -42,7 +48,7 @@ const ProdList = () => {
           </Link>
         ))
       ) : (
-        <div>lofainf</div>
+        <div>Error: Failed to fetch data.</div>
       )}
     </div>
   );

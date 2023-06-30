@@ -9,8 +9,7 @@ import Compo from "../src/app/components/hero";
 import ProdApi from "../src/app/components/Three-grid";
 import Link from "next/link";
 import "../src/app/globals.css";
-import ProdList from "../src/app/components/productList";
-import Productpage from "../src/app/components/productpage";
+import SecondSec from "../src/app/components/secondsection";
 
 const Home = () => {
   const menus = [
@@ -76,6 +75,7 @@ const Home = () => {
       </div>
       <div className=" pl-10">
         <Compo />
+        <SecondSec />
         <ProdApi />
       </div>
     </section>
