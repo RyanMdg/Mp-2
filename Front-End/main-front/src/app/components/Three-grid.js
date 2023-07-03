@@ -67,7 +67,7 @@ const threegrid = () => {
             >
               <img
                 className="w-fit overflow-hidden mb-3"
-                src={`http://localhost:3001/${product.image}`}
+                src={`https://miniproject2-5qgj.onrender.com/${product.image}`}
                 alt=""
               />
 
