@@ -11,7 +11,9 @@ const ProdList = () => {
   useEffect(() => {
     const fetchProductList = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/react");
+        const response = await axios.get(
+          "https://miniproject-2-qm9q.onrender.com/react"
+        );
         setProductsList(response.data);
         setIsLoading(false);
       } catch (error) {
