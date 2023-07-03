@@ -34,7 +34,7 @@ const ProductForm = () => {
       formDataWithImage.append("image", image);
 
       const response = await axios.post(
-        "http://localhost:3001/products/productadd",
+        "https://miniproject-2-qm9q.onrender.com/products/productadd",
         formDataWithImage,
         {
           headers: {

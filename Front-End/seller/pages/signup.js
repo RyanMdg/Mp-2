@@ -14,11 +14,14 @@ const SignupLogin = () => {
 
   const handleSignup = async () => {
     try {
-      const response = await axios.post("http://localhost:3001/user/signup", {
-        username,
-        password,
-        email,
-      });
+      const response = await axios.post(
+        "https://miniproject-2-qm9q.onrender.com/user/signup",
+        {
+          username,
+          password,
+          email,
+        }
+      );
       console.log(response.data);
       setShowModal(true);
       setEmail("");

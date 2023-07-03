@@ -15,11 +15,14 @@ const SignupLogin = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:3001/user/login", {
-        username,
-        password,
-        email,
-      });
+      const response = await axios.post(
+        "https://miniproject-2-qm9q.onrender.com/user/login",
+        {
+          username,
+          password,
+          email,
+        }
+      );
 
       const token = response.data.token; // Assuming the response returns the token
       localStorage.setItem("token", token); // Store the token in local storage

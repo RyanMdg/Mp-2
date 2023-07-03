@@ -15,11 +15,14 @@ const Table = () => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:3001/products/productlist/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await axios.delete(
+        `https://miniproject-2-qm9q.onrender.com/products/productlist/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       setproductsList((prevProductsList) =>
         prevProductsList.filter((product) => product._id !== id)
