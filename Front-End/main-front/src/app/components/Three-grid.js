@@ -8,7 +8,9 @@ const threegrid = () => {
   useEffect(() => {
     const fetchProductList = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/react");
+        const response = await axios.get(
+          "https://miniproject2-5qgj.onrender.com/react"
+        );
 
         // Randomize the order of the products
         const randomizedList = response.data.sort(() => 0.5 - Math.random());
@@ -65,7 +67,7 @@ const threegrid = () => {
             >
               <img
                 className="w-fit overflow-hidden mb-3"
-                src={`http://localhost:3001/${product.image}`}
+                src={`https://miniproject2-5qgj.onrender.com/${product.image}`}
                 alt=""
               />
 

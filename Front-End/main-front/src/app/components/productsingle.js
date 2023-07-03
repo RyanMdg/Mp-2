@@ -25,7 +25,7 @@ const SingleProduct = ({ onAddToCart }) => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/react/single/${productId}`
+          `https://miniproject2-5qgj.onrender.com/react/single/${productId}`
         );
         setProduct(response.data);
       } catch (error) {
@@ -67,7 +67,7 @@ const SingleProduct = ({ onAddToCart }) => {
         <div className="ms-28 flex justify-center items-center">
           <img
             className="w-[25rem] h-[25rem] "
-            src={`http://localhost:3001/${product.image}`}
+            src={`https://miniproject2-5qgj.onrender.com/${product.image}`}
             alt=""
           />
         </div>
