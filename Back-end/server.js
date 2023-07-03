@@ -25,6 +25,10 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(cors());
 
+app.get("/", (req, res) => {
+  res.send("hello from server");
+});
+
 app.get("/react", prodController.postReact);
 app.get("/react/single/:id", prodController.singleReact);
 
