@@ -4,7 +4,7 @@ import { RiSecurePaymentFill } from "react-icons/ri";
 
 const secondSec = () => {
   return (
-    <div className="flex border mt-7 border-[#b4b4b488] max-w-[75rem] mx-auto">
+    <div className="flex border mt-12 border-[#b4b4b488] max-w-[75rem] mx-auto">
       <div className=" border-r-2  border-[#b4b4b488] py-4 px-12 text-[1rem] flex gap-2 uppercase">
         <LiaShippingFastSolid size={40} color="#FFAD4D" />
         <div className="flex flex-col">

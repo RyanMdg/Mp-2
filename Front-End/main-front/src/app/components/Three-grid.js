@@ -25,10 +25,35 @@ const threegrid = () => {
   const limitedProducts = productsList && productsList.slice(0, 4);
 
   return (
-    <div>
+    <div className="mt-[5rem] mb-[5rem]">
       <div className="flex mt-10 flex-col items-center">
-        <h1 className=" ">Top Products</h1>
-        <div className="bg-[#fe9737b1]  relative bottom-5 h-10 w-14"></div>
+        <h1 className=" z-50 text-2xl text-[#272424] font-thin ">
+          Top Products
+        </h1>
+        <div className="bg-[#fe9737b1]  relative bottom-3 rotate-[-3rem] h-5 w-[10rem]"></div>
+      </div>
+
+      <div className="flex gap-10 justify-center my-4">
+        <div className="flex flex-col items-center">
+          <img src="/0.jpg" alt="" />
+          <h1 className=" text-[#0000008b]">Canned</h1>
+        </div>
+        <div className="flex flex-col items-center">
+          <img src="/2.jpg" alt="" />
+          <h1 className=" text-[#0000008b]">Fruits</h1>
+        </div>
+        <div className="flex flex-col items-center">
+          <img src="/3.jpg" alt="" />
+          <h1 className=" text-[#0000008b]">Drink</h1>
+        </div>
+        <div className="flex flex-col items-center">
+          <img src="/4.jpg" alt="" />
+          <h1 className=" text-[#0000008b]">Meat</h1>
+        </div>
+        <div className="flex flex-col items-center">
+          <img src="/5.jpg" alt="" />
+          <h1 className=" text-[#0000008b]">Vegetable</h1>
+        </div>
       </div>
       <div className="grid md:grid-cols-4 w-[90%] m-10">
         {limitedProducts &&

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Breadcrumb from "./breadcrumps";
 import axios from "axios";
 import QuantityButton from "./quantityBtn";
+import Footer from "../components/footer";
 
 const SingleProduct = ({ onAddToCart }) => {
   const router = useRouter();
@@ -63,9 +64,9 @@ const SingleProduct = ({ onAddToCart }) => {
       </div>
       <div className="grid mt-11 grid-cols-2">
         {/* GRID FOR IMG PRODUCTS */}
-        <div className="ms-28 flex justify-center">
+        <div className="ms-28 flex justify-center items-center">
           <img
-            className="w-[30rem]"
+            className="w-[25rem] h-[25rem] "
             src={`http://localhost:3001/${product.image}`}
             alt=""
           />
@@ -111,6 +112,9 @@ const SingleProduct = ({ onAddToCart }) => {
             </div>
           </div>
         </div>
+      </div>
+      <div className=" mt-20">
+        <Footer />
       </div>
     </div>
   );

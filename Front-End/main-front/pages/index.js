@@ -15,13 +15,10 @@ import Compo from "../src/app/components/hero";
 import ProdApi from "../src/app/components/Three-grid";
 import Link from "next/link";
 import "../src/app/globals.css";
-<<<<<<< HEAD
-import ProdList from "../src/app/components/productList";
-import Productpage from "../src/app/components/productpage";
 import FourthSec from "../src/app/components/fourthSec";
-=======
 import SecondSec from "../src/app/components/secondsection";
->>>>>>> d63875710947d4d22e0939a4904e0be5d7f07a4e
+import FifthSec from "../src/app/components/fifthsection";
+import Footer from "../src/app/components/footer";
 
 const Home = () => {
   const menus = [
@@ -100,22 +97,16 @@ const Home = () => {
             ))}
           </div>
         </div>
-<<<<<<< HEAD
-      </div>
-      <div className=" pl-10">
-        <Compo />
-        <ProdApi />
-        <FourthSec />
-      </div>
-    </section>
-=======
         <div className="pl-10">
           <Compo />
           <SecondSec />
           <ProdApi />
+          <FourthSec />
+          <FifthSec />
+          <Footer />
         </div>
       </section>
-      {/* {showModal && (
+      {showModal && (
         <div className="fixed top-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-black bg-opacity-50 transition-opacity duration-50 ease-in">
           <div className="bg-white flex flex-col items-center">
             <img src="/Newsletter.jpg" alt="" />
@@ -151,9 +142,8 @@ const Home = () => {
             X
           </button>
         </div>
-      )} */}
+      )}
     </div>
->>>>>>> d63875710947d4d22e0939a4904e0be5d7f07a4e
   );
 };
 

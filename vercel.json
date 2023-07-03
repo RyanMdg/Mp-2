@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/Back-end/(.*)",
+      "distination": "/Back-end"
+    }
+  ]
+}

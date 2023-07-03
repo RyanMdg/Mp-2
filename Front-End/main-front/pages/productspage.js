@@ -4,6 +4,7 @@ import { RiSettings4Line } from "react-icons/ri";
 import { AiOutlineUser, AiOutlineHeart, AiOutlineHome } from "react-icons/ai";
 import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
 import ProductComponent from "@/app/components/productComponent";
+import Footer from "../src/app/components/footer";
 
 import Link from "next/link";
 import "../src/app/globals.css";
@@ -73,6 +74,7 @@ const Home = () => {
       </div>
       <div className="">
         <ProductComponent />
+        <Footer />
       </div>
     </section>
   );

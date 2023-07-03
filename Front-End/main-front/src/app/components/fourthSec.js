@@ -1,8 +1,8 @@
-import React from 'react';
-import { BsHeartPulse } from 'react-icons/bs';
-import { FaRegLemon } from 'react-icons/fa';
-import { FaRegThumbsUp } from 'react-icons/fa';
-import { HiEyeDropper } from 'react-icons/hi2';
+import React from "react";
+import { BsHeartPulse } from "react-icons/bs";
+import { FaRegLemon } from "react-icons/fa";
+import { FaRegThumbsUp } from "react-icons/fa";
+import { HiEyeDropper } from "react-icons/hi2";
 
 export default function FourthSecourthSec() {
   return (
@@ -22,7 +22,7 @@ export default function FourthSecourthSec() {
           </h1>
         </div>
         <div className="absolute top-0 right-0">
-          <FaRegThumbsUp className="w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 text-orange-300" />
+          <FaRegThumbsUp className="w-8 h-8 sm:w-12 font-thin sm:h-12 md:w-16 md:h-16 text-orange-300" />
           <h1 className="mt-1 sm:mt-2 md:mt-3 text-sm sm:text-base md:text-lg font-san-serif">
             High Nutrition
           </h1>
