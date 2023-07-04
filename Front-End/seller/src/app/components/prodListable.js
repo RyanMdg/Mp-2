@@ -44,7 +44,7 @@ const Table = () => {
         }
 
         const response = await axios.get(
-          "http://localhost:3001/products/productlist",
+          "https://miniproject-2-qm9q.onrender.com/products/productlist",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -112,7 +112,7 @@ const Table = () => {
                     <div className=" flex justify-center">
                       <img
                         className=" w-36"
-                        src={`http://localhost:3001/${item.image}`}
+                        src={`https://miniproject-2-qm9q.onrender.com/${item.image}`}
                         alt=""
                       />
                     </div>
