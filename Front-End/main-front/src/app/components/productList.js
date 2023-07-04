@@ -74,7 +74,7 @@ const ProdList = () => {
               <div className="border border-[#605e5e46] shadow-lg p-2 rounded-md hover:translate-y-[-1rem] duration-300 transition-all">
                 <img
                   className="w-60 mx-auto"
-                  src={`https://miniproject-2-qm9q.onrender.com/${product.image}`}
+                  src={`https://miniproject-2-qm9q.onrender.com/upload/${product.image}`}
                   alt=""
                 />
 
